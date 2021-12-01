@@ -18,8 +18,10 @@ navToggle.addEventListener("click", function () {
   const linksHeight = links.getBoundingClientRect().height;
   if (containerHeight == 0) {
     linksContainer.style.height = `${linksHeight}px`;
+    console.log(nav.getBoundingClientRect().height);
   } else {
     linksContainer.style.height = "0";
+    console.log(nav.getBoundingClientRect().height);
   }
 });
 
@@ -52,9 +54,18 @@ scrollLinks.forEach(function (link) {
     const id = e.currentTarget.getAttribute("href");
     const element = document.querySelector(id);
     const navHeight = nav.getBoundingClientRect().height;
-    const heightOfDestination = element.offsetTop - navHeight;
+    const linksContainerHeight = linksContainer.getBoundingClientRect().height;
+    let heightOfDestination = element.offsetTop;
+    if (navHeight > 82) {
+      heightOfDestination -= navHeight - linksContainerHeight;
+    } else {
+      heightOfDestination -= navHeight;
+    }
+
     window.scrollTo(0, heightOfDestination);
     // close nav links
     linksContainer.style.height = 0;
   });
 });
+
+console.log(nav.getBoundingClientRect().height);

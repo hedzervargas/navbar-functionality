@@ -195,7 +195,7 @@ Scroll
 */
 /* navbar */
 nav {
-  background: transparent;
+  background: var(--clr-white);
   padding: 1rem 1.5rem;
   position: fixed;
   top: 0;
@@ -259,6 +259,9 @@ nav {
   color: var(--clr-grey-1);
 }
 @media screen and (min-width: 800px) {
+  nav {
+    background: transparent;
+  }
   .nav-center {
     width: 90vw;
     max-width: 1170px;
